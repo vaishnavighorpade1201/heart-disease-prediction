@@ -6,7 +6,7 @@ import pickle
 st.title("❤️ Heart Disease Prediction App")
 st.write("""
 This app predicts whether you might have heart disease based on health parameters.
-The data used comes from a reliable medical dataset on Kaggle.
+
 """)
 
 # Sidebar for user inputs
