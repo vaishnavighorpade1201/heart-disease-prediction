@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import pickle
+import matplotlib.pyplot as plt
+
 
 # Title and description
 st.title("❤️ Heart Disease Prediction App")
@@ -8,6 +10,22 @@ st.write("""
 This app predicts whether you might have heart disease based on health parameters.
 
 """)
+
+# Load dataset with target column
+heart_df_full = pd.read_csv('heart.csv')  # This includes the 'target' column
+
+# Pie chart of heart disease distribution
+st.subheader("💡 Heart Disease Dataset Distribution")
+counts = heart_df_full['target'].value_counts()
+labels = ['No Heart Disease', 'Heart Disease']
+
+fig, ax = plt.subplots()
+ax.pie(counts, labels=labels, autopct='%0.2f%%', startangle=90, colors=['#66b3ff','#ff6666'])
+ax.set_title("Heart Disease Distribution in Dataset")
+ax.axis('equal')
+
+st.pyplot(fig)
+
 
 # Sidebar for user inputs
 st.sidebar.header("Please enter your health details:")
@@ -90,3 +108,4 @@ else:
 st.subheader("Prediction Probability Details:")
 st.write(f"Probability of No Heart Disease: {model.predict_proba(model_input)[0][0]:.2%}")
 st.write(f"Probability of Heart Disease: {model.predict_proba(model_input)[0][1]:.2%}")
+
