@@ -108,4 +108,3 @@ else:
 st.subheader("Prediction Probability Details:")
 st.write(f"Probability of No Heart Disease: {model.predict_proba(model_input)[0][0]:.2%}")
 st.write(f"Probability of Heart Disease: {model.predict_proba(model_input)[0][1]:.2%}")
-
